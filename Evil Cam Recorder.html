@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <link id="favicon" rel="shortcut icon" type="image/?png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAOxAAADsQBlSsOGwAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAOMSURBVFiFxdddiFVVFAfw37mOTmIjTcpQgQxEZSlCGPT1UEFWIhHYg4H2EkVBRQgVlcrMmaGsBHsQkYooKJESCiIxKO1rLKVIC3LCKDLMtKhJp2b8mI/Tw95n7pnbHe81xuYP+5599j57/f9nnb3W2jdRA88xtZfrcRPm4iKci7MwFcdxLF6/we6Erma2PcSJWvaTsSaepHWQB3E3mmsZqoJebEnY1M5WZHUJeJamY6zAcuEtxwN7kKa8UylklIBOrhpmEy4cJ+JKbJvMnSv5NR8o5Z0OHhim6wySw4IB9qRclw8kkLIaT5xB4kr0l1jYRlfSwR0Zr/+P5DkOTWHepBt4BpdMgICmIbISLpsA8hxLS2iZQAEzS0I2myj0l5QTw8ZSCI+1ODjORBk+wcO4ERvj+E8NOIxZmN4W8kDXZh77lpsz7sJtaPyPxH/jNaxP6c4HUxbE7pdJyrtYiL7JXLySQ0ULq5lxkmWCmMvrJN6fsL6Rlx7naHFiM5O62YvZCUsa8GYUMG0guH+ZQr5ewR9Yh3WdXDHMPViK6RWkw/gQG+bw9hKGqinrphOzMZSxPVlHYw+fYX585gu8n/B5FpTuTxnMDaRcgEVYo1wlj+OpBl5ZVbF/ogfnCeV8kbIXd6Vck6fiFuFTzPdvnMQP6Mf5goAc7+FqNCkXtsNCsZks2J1ZzRPoSEkb4s3vCc9nbEBDxYNTVE9WLyd8lwXXf4yn4/h5sZ0SSVgzQrYo48VaiwrobeSRE+zCOVgc25WnYaOFcjk+e4yH/sQLCfcaHR3TT7BFqCEtwhlibpX12xLuF05Vu6sRNMSfTwfD+a0Y7+3TWPsofYzE7pLC/LWF/uIqtn+Zw8I8GjpoysIeG0xI23ljRMAqDqTcjluFQ2Vzxqw+BgoGa6XsXsFjrfH+o2IoxqhaU+LVthBdZQ/EN9wqtLHwfaHfI5yMj2BHFL5d+KStkfCt4uI2dgptFEqVA6dA8Rvui9eDQvIRxdwS+73NYY/URN0CSiEX5OiJ10EhTxA+QX6K/qCe/wSnJSApk1LO7wNJeZ/0FebrrqZ1C5g0WsCReB3xQFL2BKF+jK+AGYE0L1K5gKGsvNNHBCT8Nu4C7guu7osE/ZXzGX8Vbg+Pu4CInkhWbYONkJ4RD0TsjQRHKydK/Bi0GRjm63oNVla+WliOnzMO5AMJWcbOS/mqm30JG9tDSNaFfwB3PfSnVV/r3wAAAABJRU5ErkJggg==">
+    <title>Evil Monitor</title>
+
+    <style>
+        body, html {
+            height: 100%;
+            width: 100%;
+            margin: 0;
+            overflow: hidden;
+            font-size: 2vw;
+        }
+
+        * {
+            cursor: none;
+        }
+        #container {
+            margin: 0px auto;
+            width: 100%;
+            height: 100%;
+        }
+
+        #videoElement {
+            width: 100%;
+            height: 100%;
+            background-color: #fff;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <video autoplay="true" id="videoElement"></video>
+    </div>
+    <script>
+        var video = document.querySelector("#videoElement");
+
+        navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia || navigator.oGetUserMedia;
+
+        if (navigator.getUserMedia) {
+            navigator.getUserMedia({ video: true }, handleVideo, videoError);
+        }
+
+        function handleVideo(stream) {
+            video.src = window.URL.createObjectURL(stream);
+        }
+
+        function videoError(e) {
+            // do something
+        }
+    </script>
+</body>
+</html>
