@@ -1,7 +1,5 @@
 try:
-   import threading,socket,os,time#,select
-   #from time import sleep
-   from hashlib import sha256
+   import threading,socket
 except Exception as e:
    print("Exception at importing: %s"%e)
    raise SystemExit
