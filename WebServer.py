@@ -19,7 +19,7 @@ class ProcessThread(threading.Thread):
           self.client.settimeout(5)
           print("Received Connection From Victim %s:%s"%(self.address[0],self.address[1]))
           Tmp = self.client.recv(4096)
-          self.client.send(Data)
+          self.client.send(Data.encode("UTF-8"))
       except Exception as e:
           print("Exception at handeling web thread %s"%e)
       finally:
@@ -36,8 +36,8 @@ def WebClient():
          client, addr = s.accept()
          Thread = ProcessThread(client,addr)
          Thread.start()
-     except Exception as msg:
-         print "Web Socket error: %s" % msg
+     except Exception as e:
+         print ("Exception at Web Socket: %s"%e)
 
 Tokens = []
 if __name__ == "__main__":
