@@ -39,7 +39,6 @@ def WebClient():
      except Exception as e:
          print ("Exception at Web Socket: %s"%e)
 
-Tokens = []
 if __name__ == "__main__":
    Port = 80
    print("Starting Web Server")
